@@ -42,3 +42,12 @@ def get_matches_by_tag(matched_by_selector):
                              if tag in matched_by_selector[selector]]
         matches_by_tag[tag] = matched_selectors
     return matches_by_tag
+
+
+def get_output(tag, output=''):
+    parents = tag.find_parents()
+    for parent in parents[::-1]:
+        if type(parent.name) is str and '[' not in parent.name:
+            output += parent.name + ' >> '
+    output += '>> a'
+    return output
